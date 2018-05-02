@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Default scene • Made with A-Frame</title>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/vendor.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body>
+    <a-scene 
+    bloom='radius: 0.66'
+    fxaa='true'
+    godrays='src: #sun; threshold: 0. 0.33; intensity: 2'
+    glitch='true'
+    antialias='false'
+    fog="type: linear; color: #c6dff4; far:1000"
+    tick-component>
+    <a-assets>
+    <a-asset-item id='logo' src='./model/logo.glb'></a-asset-item>
+    <a-asset-item id='island' src='./model/island2.glb' ></a-asset-item>
+    <a-asset-item id='cloud' src='./model/cloud.glb' ></a-asset-item>
+    <a-asset-item id='sail' src='./model/sail.glb' ></a-asset-item>
+    <a-asset-item id='exoFont' src='./fonts/Zorque_Regular.json' ></a-asset-item>
+    <a-asset-item id='exoItalicFont' src='./fonts/Zorque_Regular.json' ></a-asset-item>
+    <img id='chrome' src='./images/chrome.png' crossOrigin='anonymous' ></a-asset-item>
+    <img id='chrome2' src='./images/chrome2.png' crossOrigin='anonymous' ></a-asset-item>
+  </a-assets>
+    <a-entity  id='hero' position='-4.590 60.606 -356.335' rotation='0 -0.053 0' clouds>
+      <a-camera id='camera' position='0 1.6 -13' look-controls-enabled='false' wasd-controls-enabled='false' ></a-camera>
+      </a-entity >
+    </a-entity >
+    <a-entity id='mainScene' scale='15 15 15' position='0 25 -500' >
+    <a-ocean id='ocean' scale='1 1 1' color='#92E2E2' width='200' depth='200' density='45' speed='2' position='0 1.445 0'></a-ocean>
+    <a-entity gltf-model='#logo' position='0 4.679 -6' rotation='-90 180 0' material=' metalness:0.9; roughness: 0.05; sphericalEnvMap: #chrome2;' ></a-entity>
+    <a-entity gltf-model='#island' position='0 0 -6' rotation='0 0 0' scale='0.2 0.2 0.2' ></a-entity>
+    <a-entity gltf-model='#cloud' position='0 10 -15' ></a-entity>
+    <a-entity gltf-model='#cloud' position='5 10 -20' ></a-entity>
+    <a-entity gltf-model='#cloud' position='-5, 10 0' ></a-entity>
+    <a-entity gltf-model='#cloud' position='-10 10 5' ></a-entity>
+    <a-entity gltf-model='#sail' scale='0.3 0.3 0.3' position='11.724 -0.400 -3.513' />
+    <a-entity a-gltf-model geometry="primitive: circle; radius: 40" rotation="-90 0 0" material="src: ./images/grid.png; repeat: 160 160;" ></a-entity>
+    <a-sky src="./images/sky.png"></a-sky>
+    </a-entity>
+    </a-scene>
+  </body>
+</html>
