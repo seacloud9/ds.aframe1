@@ -5,6 +5,34 @@
 
 @import "compass/reset";
 @import "compass/css3";
+
+$breakpoints: (
+  small : 480px,
+  medium: 700px, // Previously 640px
+  large : 1024px
+);
+
+$loader-font-sizes: (
+  null  : 34px,
+  small : 36px,
+  medium: 40px,
+  large : 50px
+);
+
+@mixin fontSize($fs-map) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    }
+    @else {
+      @media screen and (min-width: $fs-breakpoint) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+
 @mixin imgGlitch($name, $intensity, $width, $height, $top, $left) {
   
   $steps: $intensity;
@@ -172,7 +200,7 @@ body {
 }
 
 .progress-label{
-  font-size: 50px;
+  @include fontSize($loader-font-sizes);
   color: #056ac1;
   //@include textGlitch("progress-label", 17, #056ac1, #c6dff4, #c1040e, #056ac1, 450, 115);
 }
