@@ -39,7 +39,7 @@ window.AFRAME.registerComponent('clouds', {
   buildClouds: function (scene) {
     let object = this.el.object3D
     var loader = new window.THREE.TextureLoader()
-    var texture = loader.load('/images/cloud10.png', scene.render)
+    var texture = loader.load('./images/cloud10.png', scene.render)
 
     texture.magFilter = window.THREE.LinearMipMapLinearFilter
     texture.minFilter = window.THREE.LinearMipMapLinearFilter

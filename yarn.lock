@@ -193,6 +193,13 @@ aframe-extras@^4.1.0:
   dependencies:
     three-pathfinding "^0.5.5"
 
+"aframe-preloader-component@https://github.com/gladeye/aframe-preloader-component":
+  version "1.0.2"
+  resolved "https://github.com/gladeye/aframe-preloader-component#0a7a70e4ef77551854e3e3093797284391603722"
+  dependencies:
+    bootstrap "^3.3.7"
+    jquery "^1.12.4"
+
 aframe-text-geometry-component@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/aframe-text-geometry-component/-/aframe-text-geometry-component-0.5.1.tgz#c5024e182aa96f548cd7fea6e53dd47b7f6f753a"
@@ -1523,6 +1530,10 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bootstrap@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
 bower-config@^1.4.0:
   version "1.4.0"
@@ -4263,6 +4274,10 @@ jodid25519@^1.0.0:
   resolved "https://registry.yarnpkg.com/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
   dependencies:
     jsbn "~0.1.0"
+
+jquery@^1.12.4:
+  version "1.12.4"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-1.12.4.tgz#01e1dfba290fe73deba77ceeacb0f9ba2fec9e0c"
 
 js-tokens@^3.0.0:
   version "3.0.1"

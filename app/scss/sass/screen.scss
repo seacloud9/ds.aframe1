@@ -1,0 +1,188 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+@mixin imgGlitch($name, $intensity, $width, $height, $top, $left) {
+  
+  $steps: $intensity;
+  
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i*(1/$steps))} {
+            clip: rect(
+              random($height)+px,
+              $width+px,
+              random($height)+px,
+              0
+            );
+          }
+        }
+      }
+    }
+  }
+  
+  > img {
+    position: absolute;
+    top: $top+px;
+    left: $left+px;
+  }
+  > img:nth-child(2),
+  > img:nth-child(3){
+    clip: rect(0, 0, 0, 0); 
+  }
+  > img:nth-child(2) {
+    left: ($left + 2) + px;
+    animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
+  }
+  > img:nth-child(3) {
+    left: ($left - 2) + px;
+    animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
+  }
+}
+
+
+
+@mixin svgGlitch($name, $intensity, $fillColor, $background, $fillHighlight1, $fillHighlight2, $width, $height, $top, $left) {
+  
+  $steps: $intensity;
+  
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i*(1/$steps))} {
+            clip: rect(
+              (random($height)-20)+px,
+              $width+px,
+              (random($height)+20)+px,
+              0
+            );
+          }
+        }
+      }
+    }
+  }
+  
+  svg {
+    position: absolute;
+    top: $top+px;
+    left: $left+px;
+    fill: $fillColor;
+    background: $background;
+    width: $width+px;
+    height: $height+px;
+  }
+  svg:nth-child(2),
+  svg:nth-child(3) {
+    clip: rect(0, 0, 0, 0); 
+  }
+  svg:nth-child(2) {
+    fill: $fillHighlight1;
+    left: ($left - 2) + px;
+    animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
+  }
+  svg:nth-child(3) {
+    fill: $fillHighlight2;
+    left: ($left + 2) + px;
+    animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
+  }
+}
+
+
+@mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height) {
+  
+  color: $textColor;
+  position: relative;
+  $steps: $intensity;
+  
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i*(1/$steps))} {
+            clip: rect(
+              random($height)+px,
+              $width+px,
+              random($height)+px,
+              0
+            );
+          }
+        }
+      }
+    }
+  }
+  &:before,
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $background;
+    clip: rect(0, 0, 0, 0); 
+  }
+  &:after {
+    left: 2px;
+    text-shadow: -1px 0 $highlightColor1;
+    animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
+  }
+  &:before {
+    left: -2px;
+    text-shadow: 2px 0 $highlightColor2; 
+    animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
+  }
+  
+}
+
+html,
+body {
+  overflow: hidden;
+  background-color: #c6dff4 !important;
+}
+.modal{
+  top: 0 !important;
+}
+.modal-dialog__full{
+  max-width: 100%;
+}
+
+@font-face {
+  font-family: 'Phelix Boomgartner';
+  font-weight: normal;
+  font-style: normal;
+  src: url('/fonts/PhelixBoomgartner-Regular.woff2') format('woff2'), url('/fonts/PhelixBoomgartner-Regular.woff') format('woff');
+}
+
+*{
+  border:none !important;
+  overflow: hidden;
+  background-color: #c6dff4 !important;
+  font-family: 'Phelix Boomgartner' !important;
+}
+
+.progress-label{
+  font-size: 50px;
+  color: #056ac1;
+  //@include textGlitch("progress-label", 17, #056ac1, #c6dff4, #c1040e, #056ac1, 450, 115);
+}
+
+.logo{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  @include imgGlitch("logo", 15, 600, 600, calc(50% - #{300px}), calc(50% - #{300px}));
+}

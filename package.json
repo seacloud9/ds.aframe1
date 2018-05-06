@@ -20,6 +20,7 @@
     "aframe-effects": "^0.8.0",
     "aframe-environment-component": "^1.0.0",
     "aframe-extras": "^4.1.0",
+    "aframe-preloader-component": "https://github.com/gladeye/aframe-preloader-component",
     "aframe-text-geometry-component": "^0.5.1"
   },
   "devDependencies": {
